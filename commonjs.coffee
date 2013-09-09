@@ -12,3 +12,6 @@ cache = {}
 @require.define = (bundle) ->
   for key, value of bundle
     modules[key] = value
+
+@require.modules = modules
+@require.cache = cache
