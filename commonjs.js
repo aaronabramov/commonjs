@@ -33,4 +33,8 @@
     return _results;
   };
 
+  this.require.modules = modules;
+
+  this.require.cache = cache;
+
 }).call(this);
