@@ -29,7 +29,7 @@
         return require('does not exist');
       }).to["throw"](/not found/);
     });
-    return it("does not evaluat module until it is required", function() {
+    it("does not evaluat module until it is required", function() {
       var spy;
       spy = sinon.spy();
       require.define({
@@ -39,6 +39,19 @@
       });
       spy.called.should.not.be.ok;
       require("b");
+      return spy.calledOnce.should.be.ok;
+    });
+    return it("evauates only once", function() {
+      var spy;
+      spy = sinon.spy();
+      require.define({
+        "c": function(exports, require, module) {
+          return spy();
+        }
+      });
+      require("c");
+      spy.calledOnce.should.be.ok;
+      require("c");
       return spy.calledOnce.should.be.ok;
     });
   });

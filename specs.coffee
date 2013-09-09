@@ -22,3 +22,13 @@ describe "#require", ->
     require "b"
     spy.calledOnce.should.be.ok
 
+  it "evauates only once", ->
+    spy = sinon.spy()
+    require.define "c": (exports, require, module) ->
+      spy()
+    require "c"
+    spy.calledOnce.should.be.ok
+    require "c"
+    spy.calledOnce.should.be.ok
+
+
