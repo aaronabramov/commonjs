@@ -36,4 +36,8 @@ describe "commonjs", ->
       require "c"
       spy.calledOnce.should.be.ok
 
-
+    it "registers the name of the module", ->
+      require.define "e": (exports, require, module) ->
+        module.exports.name = module.id
+      e = require "e"
+      e.name.should.be.equal "e"

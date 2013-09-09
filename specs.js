@@ -45,7 +45,7 @@
         require("b");
         return spy.calledOnce.should.be.ok;
       });
-      return it("evauates only once", function() {
+      it("evauates only once", function() {
         var spy;
         spy = sinon.spy();
         require.define({
@@ -57,6 +57,16 @@
         spy.calledOnce.should.be.ok;
         require("c");
         return spy.calledOnce.should.be.ok;
+      });
+      return it("registers the name of the module", function() {
+        var e;
+        require.define({
+          "e": function(exports, require, module) {
+            return module.exports.name = module.id;
+          }
+        });
+        e = require("e");
+        return e.name.should.be.equal("e");
       });
     });
   });

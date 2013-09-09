@@ -16,11 +16,12 @@
       id: name,
       exports: {}
     };
+    cache[name] = module.exports;
     fn = modules[name] || (function() {
       throw new Error("module " + name + " not found");
     })();
     fn(module.exports, window.require, module);
-    return cache[name] = module.exports;
+    return module.exports;
   };
 
   this.require.define = function(bundle) {
