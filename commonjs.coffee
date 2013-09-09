@@ -8,7 +8,7 @@ cache = {}
   cache[name] = module.exports
   fn = modules[name] or throw new Error "module #{name} not found"
   fn(module.exports, window.require, module)
-  module.exports
+  cache[name] = module.exports
 
 @require.define = (bundle) ->
   for key, value of bundle

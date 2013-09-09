@@ -21,7 +21,7 @@
       throw new Error("module " + name + " not found");
     })();
     fn(module.exports, window.require, module);
-    return module.exports;
+    return cache[name] = module.exports;
   };
 
   this.require.define = function(bundle) {
