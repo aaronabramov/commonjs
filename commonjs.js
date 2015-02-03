@@ -1,4 +1,7 @@
 // git@github.com:rutkovsky/commonjs.git
+// require.define({'my-module-name': function(exports, require, module) {
+//   module.exports = {...module code...};
+// }});
 (function() {
   var cache, modules;
 
